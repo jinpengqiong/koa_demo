@@ -2,12 +2,15 @@ var Koa = require('koa')
 const router = require('koa-router')()
 const views = require('koa-views')
 const bodyParser = require('koa-bodyparser');
+const serve = require('koa-static');
 
 var app = new Koa()
 // * koa-views
 const render = views('views', { extension: 'ejs' });
 app.use(render);
 app.use(bodyParser())
+
+app.use(serve(__dirname + '/dist'));
 
 app.use(async(ctx,next)=>{
   console.log(new Date())
