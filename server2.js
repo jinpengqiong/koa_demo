@@ -28,7 +28,7 @@ app.use(async (ctx, next) => {
     age: 30,
   };
   // * koa-session actions
-  console.log(`ctx.session`, ctx.session)
+  // console.log(`ctx.session`, ctx.session)
   let n = ctx.session.views || 0;
   ctx.session.views = ++n;
   ctx.body = n + ' views';
