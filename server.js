@@ -1,16 +1,27 @@
 var Koa = require('koa')
 const router = require('koa-router')()
-const views = require('koa-views')
+const path = require('path')
+// const views = require('koa-views')
+const render = require('koa-art-template');
 const bodyParser = require('koa-bodyparser');
-const serve = require('koa-static');
+// const serve = require('koa-static');
 
 var app = new Koa()
 // * koa-views
-const render = views('views', { extension: 'ejs' });
-app.use(render);
+// const render = views('views', { extension: 'ejs' });
+// app.use(render);
+
+// * koa-art-template
+render(app, {
+  root: path.join(__dirname, 'views'),
+  extname: '.html',
+  debug: process.env.NODE_ENV !== 'production',
+});
+
+
 app.use(bodyParser())
 
-app.use(serve(__dirname + '/dist'));
+// app.use(serve(__dirname + '/dist'));
 
 app.use(async(ctx,next)=>{
   console.log(new Date())
@@ -28,9 +39,13 @@ app.use(async(ctx, next) => {
 router
   .get('/', async(ctx, next) => {
     const content = '<h2>this is a html variable</h2>'
-    await ctx.render('index.ejs', {
+    // await ctx.render('index.ejs', {
+    //   list: ['ejs Modules', 'Micheal Jordan', 'Micheal Jackson'],
+    //   content
+    // });
+    await ctx.render('index.html', {
       list: ['ejs Modules', 'Micheal Jordan', 'Micheal Jackson'],
-      content
+      content,
     });
   })
 
