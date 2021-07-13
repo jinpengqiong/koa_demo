@@ -1,15 +1,22 @@
 var Koa = require('koa')
 const router = require('koa-router')()
+const views = require('koa-views')
 
 var app = new Koa()
+// * koa-views
+const render = views('views', { extension: 'ejs' });
+app.use(render);
+
 app.use(async(ctx,next)=>{
   console.log(new Date())
   await next()
 })
 
 router
-  .get('/', function(ctx, next){
-  ctx.body = '你好，koa server send data';
+  .get('/', async(ctx, next) => {
+    await ctx.render('index.ejs', {
+      title: 'ejs Modules'
+    });
   })
 
 router.get('/user/:id', async (ctx, next) => {
