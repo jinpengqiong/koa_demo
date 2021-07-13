@@ -15,6 +15,14 @@
       <li><h3><%= list[i] %></h3></li>
       <% } %>
     </ul>
+    <%- content %>
+    <%= userInfo.age %>
+
+    <form action="/form_submit" method="post">
+      用户名： <input type="userName" name="userName">
+      密码： <input type="password" name="password">
+      <button type="submit">Submit</button>
+    </form>
   </div>
 </body>
 </html>
