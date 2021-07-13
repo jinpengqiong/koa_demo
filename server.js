@@ -43,6 +43,11 @@ router
     //   list: ['ejs Modules', 'Micheal Jordan', 'Micheal Jackson'],
     //   content
     // });
+    const userInfo = new Buffer('金鹏').toString('base64')
+    ctx.cookies.set('userInfo', userInfo, {
+      maxAge: 60 * 1000 * 60 * 24,
+      httpOnly: true,
+    });
     await ctx.render('index.html', {
       list: ['ejs Modules', 'Micheal Jordan', 'Micheal Jackson'],
       content,
@@ -50,7 +55,8 @@ router
   })
 
 router.get('/user/:id', async (ctx, next) => {
-  ctx.body = `user id is ${ctx.params.id}`;
+  // * 设置中文cookies
+  ctx.body = `user id is ${ctx.params.id}, userinfo : ${new Buffer(ctx.cookies.get('userInfo'), 'base64').toString()}`;
 });
 router.get('/login', async (ctx, next) => {
   ctx.body = `logon page`;
