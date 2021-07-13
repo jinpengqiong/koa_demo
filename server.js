@@ -15,7 +15,7 @@ app.use(async(ctx,next)=>{
 router
   .get('/', async(ctx, next) => {
     await ctx.render('index.ejs', {
-      title: 'ejs Modules'
+      list: ['ejs Modules','Micheal Jordan','Micheal Jackson']
     });
   })
 
