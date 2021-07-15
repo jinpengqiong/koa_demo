@@ -3,17 +3,23 @@ var MongoClient = require('mongodb').MongoClient;
 
 class DB {
   constructor(){
-    // this.connect()
+    this.connect()
+    this.clientInstance = ''
   }
   connect(){
     return new Promise( (resolve, reject) => {
-      MongoClient.connect(dbUrl, (err, client) => {
-        if (err){
-          reject(err)
-        }
-        var db = client.db(dbName);
-        resolve(db)
-      });
+      if(this.clientInstance){
+        resolve(this.clientInstance);
+      }else{
+        MongoClient.connect(dbUrl, (err, client) => {
+          if (err) {
+            reject(err);
+          }
+          this.clientInstance = client.db(dbName);
+          resolve(this.clientInstance);
+        });
+      }
+
     })
   }
   find(collectionName, obj){

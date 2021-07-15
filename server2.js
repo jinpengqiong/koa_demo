@@ -37,7 +37,7 @@ router.get('/', async (ctx, next) => {
   const mongoDBInstance = new _MongDB();
   const data = await mongoDBInstance.find('king', {}).then(async (data) => {
     console.log(`JSON.stringify(data)`, JSON.stringify(data));
-    ctx.state.userInfo = JSON.stringify(data);
+    ctx.state.userInfo = data;
     return data
   });
   await ctx.render('index.html', {
