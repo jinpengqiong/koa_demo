@@ -36,16 +36,7 @@ app.use(async (ctx, next) => {
 });
 
 router.get('/', async (ctx, next) => {
-  // const content = '<h2>this is a html variable</h2>';
-  // const userInfo = Buffer.alloc(6, '金鹏').toString('base64');
-  // ctx.cookies.set('userInfo', userInfo, {
-  //   maxAge: 60 * 1000 * 60 * 24,
-  //   httpOnly: true,
-  // });
-  // await ctx.render('index.html', {
-  //   list: ['ejs Modules', 'Micheal Jordan', 'Micheal Jackson'],
-  //   content,
-  // });
+  
 });
 
 router.get('/user/:id', async (ctx, next) => {
