@@ -16,7 +16,7 @@
       </li>
       {{ /each }}
   </ul>
-  {{@ userInfo[0].title }}
+  <h4>last updated time: {{@ userInfo[userInfo.length-1].time }}</h4>
 </body>
 <script>
   // console.log('cookies', document.cookie)
