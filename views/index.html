@@ -7,7 +7,6 @@
   <title>Document</title>
 </head>
 <body>
-  {{ include '../public/header.ejs' }}
   <ul>
       {{ each list }}
       <li>
@@ -17,9 +16,9 @@
       </li>
       {{ /each }}
   </ul>
-  {{@ content }}
+  {{@ userInfo }}
 </body>
 <script>
-  console.log('cookies', document.cookie)
+  // console.log('cookies', document.cookie)
 </script>
 </html>
