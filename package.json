@@ -19,7 +19,8 @@
     "koa-session": "^6.2.0",
     "koa-static": "^5.0.0",
     "koa-views": "^7.0.1",
-    "mongodb": "^4.0.0"
+    "mongodb": "^4.0.0",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
