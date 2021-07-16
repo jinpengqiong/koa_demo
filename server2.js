@@ -5,6 +5,8 @@ const session = require('koa-session');
 const render = require('koa-art-template');
 const bodyParser = require('koa-bodyparser');
 const mongoDBInstance = require('./db/db');
+const admin = require('./routes/admin')
+const API = require('./routes/api')
 
 
 var app = new Koa();
@@ -49,6 +51,10 @@ router.get('/user/:id', async (ctx, next) => {
   // * 设置中文cookies
   ctx.body = `user id is ${ctx.params.id}, userinfo : ${Buffer.alloc(6, ctx.cookies.get('userInfo'), 'base64').toString()}`;
 });
+//* redirect to sub-routes
+router.use('/admin', admin);
+router.use('/api', API);
+
 router.get('/deleteUser', async (ctx, next) => {
   await mongoDBInstance.delete('king', { title: 'MongoDB 教程11111111111' }).then((isOk) => {
     if (isOk) {
