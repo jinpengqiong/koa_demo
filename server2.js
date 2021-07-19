@@ -61,6 +61,7 @@ router.get('/checkCode', async (ctx, next) => {
     height: 40,
     background: 'lightGreen'
   });
+  ctx.response.type = 'image/svg+xml'
   ctx.body = captcha.data
 });
 
